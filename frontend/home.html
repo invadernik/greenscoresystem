@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenScore - Home</title>
+    <meta name="description" content="GreenScore - Sustainability Credit Scoring Platform">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+    <!-- Background -->
+    <div class="bg-gradient"></div>
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <!-- Fixed Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="home.html" class="nav-logo">
+            <span class="nav-icon">🌿</span>
+            <span class="nav-title">GreenScore</span>
+        </a>
+        <div class="nav-links">
+            <a href="home.html" class="nav-link active">
+                <span>🏠</span> Home
+            </a>
+            <a href="#" class="nav-link nav-user-link" id="navUserLink" style="display: none;">
+                <span>👤</span> <span id="navUserName">User</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container home-container">
+        <!-- Hero Section -->
+        <header class="home-header">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-icon">🌿</span>
+                    GreenScore
+                </h1>
+                <p class="hero-tagline">Sustainability Credit Scoring Platform</p>
+                <p class="hero-description">
+                    Track your environmental impact. Make sustainable choices. Earn rewards.
+                </p>
+            </div>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-container">
+                <div class="search-icon">🔍</div>
+                <input type="text" id="searchInput" class="search-input"
+                    placeholder="Search users by name, email, or ID..." autocomplete="off">
+                <button class="search-clear" id="searchClear" style="display: none;">✕</button>
+            </div>
+            <div class="search-stats">
+                <span id="userCount">Loading users...</span>
+            </div>
+        </section>
+
+        <!-- Users Grid -->
+        <section class="users-section">
+            <div class="users-grid" id="usersGrid">
+                <!-- Users will be dynamically inserted -->
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState">
+                <div class="loader"></div>
+                <p>Loading users...</p>
+            </div>
+
+            <!-- No Results -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <span class="no-results-icon">🔍</span>
+                <p>No users found matching your search</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="home.js"></script>
+</body>
+
+</html>

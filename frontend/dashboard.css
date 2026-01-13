@@ -1,0 +1,197 @@
+/* =============================================
+   GreenScore - Dashboard Specific Styles
+   ============================================= */
+
+/* Dashboard Container */
+.dashboard-container {
+    padding-top: 80px;
+}
+
+/* User Header */
+.user-header {
+    padding: var(--spacing-lg) 0;
+    margin-bottom: var(--spacing-md);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.user-avatar-large {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    background: var(--gradient-primary);
+}
+
+.user-details {
+    flex: 1;
+}
+
+.user-full-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.user-email-display {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Improvements Card */
+.improvements-card {
+    grid-column: span 12;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.05) 0%, var(--bg-card) 100%);
+}
+
+.improvement-badge {
+    background: rgba(255, 107, 107, 0.2);
+    color: var(--red-warning);
+    border: 1px solid rgba(255, 107, 107, 0.4);
+}
+
+.improvements-intro {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.improvements-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.improvement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: var(--bg-glass);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--red-warning);
+    transition: all var(--transition-fast);
+}
+
+.improvement-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.improvement-item.priority-high {
+    border-left-color: var(--red-warning);
+}
+
+.improvement-item.priority-medium {
+    border-left-color: var(--orange-warning);
+}
+
+.improvement-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.improvement-content {
+    flex: 1;
+}
+
+.improvement-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.improvement-issue {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.improvement-examples {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.improvement-suggestion {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(0, 212, 170, 0.1);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    color: var(--green-primary);
+}
+
+.improvement-potential {
+    margin-left: auto;
+    text-align: right;
+}
+
+.potential-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.potential-value {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--green-primary);
+}
+
+/* No Improvements State */
+.no-improvements {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--text-secondary);
+}
+
+.no-improvements-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Hide improvements card if no issues */
+.improvements-card.hidden {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .user-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .user-full-name {
+        font-size: 1.4rem;
+    }
+
+    .improvement-item {
+        flex-direction: column;
+    }
+
+    .improvement-potential {
+        margin-left: 0;
+        margin-top: var(--spacing-sm);
+        text-align: left;
+    }
+}

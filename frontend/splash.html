@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenScore - Loading</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0A0E17;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .splash-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        /* Liquid Gradient Background Animation */
+        .liquid-bg {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(180deg,
+                    rgba(0, 212, 170, 0.8) 0%,
+                    rgba(0, 180, 216, 0.6) 25%,
+                    rgba(157, 78, 221, 0.4) 50%,
+                    rgba(10, 14, 23, 0.9) 75%,
+                    #0A0E17 100%);
+            animation: liquidFlow 2.5s ease-in-out forwards;
+            z-index: 1;
+        }
+
+        @keyframes liquidFlow {
+            0% {
+                transform: translateY(-30%) rotate(0deg);
+                opacity: 1;
+            }
+
+            30% {
+                transform: translateY(0%) rotate(2deg);
+            }
+
+            60% {
+                transform: translateY(30%) rotate(-2deg);
+            }
+
+            100% {
+                transform: translateY(100%) rotate(0deg);
+                opacity: 0;
+            }
+        }
+
+        /* Water Ripple Effects */
+        .ripple {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 212, 170, 0.3) 0%, transparent 70%);
+            animation: rippleEffect 2s ease-out forwards;
+            z-index: 2;
+        }
+
+        .ripple-1 {
+            width: 600px;
+            height: 600px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0.2s;
+        }
+
+        .ripple-2 {
+            width: 400px;
+            height: 400px;
+            top: 40%;
+            right: 15%;
+            animation-delay: 0.5s;
+        }
+
+        .ripple-3 {
+            width: 500px;
+            height: 500px;
+            bottom: 20%;
+            left: 30%;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes rippleEffect {
+            0% {
+                transform: scale(0);
+                opacity: 0.8;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Flowing Streams */
+        .stream {
+            position: fixed;
+            width: 4px;
+            background: linear-gradient(180deg, rgba(0, 212, 170, 0.8), transparent);
+            z-index: 3;
+            animation: streamFlow 1.5s ease-in forwards;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .stream-1 {
+            left: 10%;
+            height: 0;
+            animation-delay: 0s;
+        }
+
+        .stream-2 {
+            left: 25%;
+            height: 0;
+            animation-delay: 0.1s;
+        }
+
+        .stream-3 {
+            left: 40%;
+            height: 0;
+            animation-delay: 0.2s;
+        }
+
+        .stream-4 {
+            left: 55%;
+            height: 0;
+            animation-delay: 0.15s;
+        }
+
+        .stream-5 {
+            left: 70%;
+            height: 0;
+            animation-delay: 0.25s;
+        }
+
+        .stream-6 {
+            left: 85%;
+            height: 0;
+            animation-delay: 0.1s;
+        }
+
+        @keyframes streamFlow {
+            0% {
+                top: -20%;
+                height: 0;
+            }
+
+            30% {
+                height: 30vh;
+            }
+
+            100% {
+                top: 120%;
+                height: 40vh;
+            }
+        }
+
+        /* Logo Container */
+        .logo-container {
+            position: relative;
+            z-index: 20;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            animation: logoReveal 1s ease-out 1.2s forwards;
+        }
+
+        @keyframes logoReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(20px);
+            }
+
+            50% {
+                transform: scale(1.05) translateY(-5px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .logo-icon {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 1rem;
+            animation: logoFloat 2s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        @keyframes logoFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .logo-text {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00D4AA 0%, #00B4D8 50%, #9D4EDD 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            color: #94A3B8;
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 1.8s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Loading Bar */
+        .loading-bar {
+            position: absolute;
+            bottom: 15%;
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out 1.5s forwards;
+        }
+
+        .loading-progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #00D4AA, #00B4D8);
+            border-radius: 2px;
+            animation: loadProgress 1.5s ease-out 1.5s forwards;
+        }
+
+        @keyframes loadProgress {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* Particle Effects */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(0, 212, 170, 0.6);
+            border-radius: 50%;
+            animation: particleFall 2s ease-in forwards;
+        }
+
+        @keyframes particleFall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Liquid Flow Background -->
+    <div class="liquid-bg"></div>
+
+    <!-- Water Ripples -->
+    <div class="ripple ripple-1"></div>
+    <div class="ripple ripple-2"></div>
+    <div class="ripple ripple-3"></div>
+
+    <!-- Flowing Streams -->
+    <div class="stream stream-1"></div>
+    <div class="stream stream-2"></div>
+    <div class="stream stream-3"></div>
+    <div class="stream stream-4"></div>
+    <div class="stream stream-5"></div>
+    <div class="stream stream-6"></div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Logo & Branding -->
+    <div class="splash-container">
+        <div class="logo-container">
+            <span class="logo-icon">🌿</span>
+            <h1 class="logo-text">GreenScore</h1>
+            <p class="tagline">Sustainability Credit Scoring Platform</p>
+        </div>
+
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <script>
+        // Generate particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 1.5 + 's';
+                particle.style.width = (Math.random() * 6 + 3) + 'px';
+                particle.style.height = particle.style.width;
+                container.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Redirect to home page after 2.5 seconds
+        setTimeout(() => {
+            window.location.href = 'home.html';
+        }, 2500);
+    </script>
+</body>
+
+</html>
