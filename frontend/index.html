@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenScore - Sustainability Credit Scoring</title>
+    <meta name="description" content="AI-powered sustainability scoring platform for eco-conscious financial decisions">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-gradient"></div>
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🌿</span>
+                <h1>GreenScore</h1>
+            </div>
+            <p class="tagline">Sustainability Credit Scoring Platform</p>
+        </header>
+
+        <!-- Main Dashboard Grid -->
+        <main class="dashboard">
+            <!-- Score Card - Main Feature -->
+            <section class="card score-card" id="scoreCard">
+                <div class="card-header">
+                    <h2>Your GreenScore</h2>
+                    <span class="badge" id="scoreBadge">Loading...</span>
+                </div>
+                <div class="score-display">
+                    <div class="score-circle" id="scoreCircle">
+                        <svg class="score-ring" viewBox="0 0 200 200">
+                            <circle class="score-ring-bg" cx="100" cy="100" r="85"/>
+                            <circle class="score-ring-progress" cx="100" cy="100" r="85" id="scoreRing"/>
+                        </svg>
+                        <div class="score-value">
+                            <span class="score-number" id="scoreNumber">--</span>
+                            <span class="score-max">/100</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="score-explanation" id="scoreExplanation">Analyzing your sustainability profile...</p>
+                <div class="score-stats">
+                    <div class="stat">
+                        <span class="stat-value" id="totalTransactions">--</span>
+                        <span class="stat-label">Transactions</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="netImpact">--</span>
+                        <span class="stat-label">Net Impact</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ESG Breakdown -->
+            <section class="card esg-card">
+                <div class="card-header">
+                    <h2>ESG Breakdown</h2>
+                    <span class="info-icon" title="Environmental, Social, Governance">ℹ️</span>
+                </div>
+                <div class="esg-chart-container">
+                    <canvas id="esgChart"></canvas>
+                </div>
+                <div class="esg-legend" id="esgLegend">
+                    <div class="esg-item">
+                        <span class="esg-dot" style="background: var(--green-primary)"></span>
+                        <span>Environmental</span>
+                        <span class="esg-value" id="esgEnvironmental">--</span>
+                    </div>
+                    <div class="esg-item">
+                        <span class="esg-dot" style="background: var(--blue-accent)"></span>
+                        <span>Social</span>
+                        <span class="esg-value" id="esgSocial">--</span>
+                    </div>
+                    <div class="esg-item">
+                        <span class="esg-dot" style="background: var(--purple-accent)"></span>
+                        <span>Governance</span>
+                        <span class="esg-value" id="esgGovernance">--</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Current Tier & Incentives -->
+            <section class="card tier-card">
+                <div class="card-header">
+                    <h2>Your Tier</h2>
+                </div>
+                <div class="tier-display" id="tierDisplay">
+                    <div class="tier-badge" id="tierBadge">🌱</div>
+                    <h3 class="tier-name" id="tierName">Loading...</h3>
+                    <p class="tier-range" id="tierRange">Score: --</p>
+                </div>
+                <div class="next-tier" id="nextTierInfo">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="tierProgress"></div>
+                    </div>
+                    <p class="next-tier-text" id="nextTierText">Loading...</p>
+                </div>
+            </section>
+
+            <!-- Insights Panel -->
+            <section class="card insights-card">
+                <div class="card-header">
+                    <h2>Sustainability Insights</h2>
+                    <span class="refresh-btn" onclick="loadInsights()">🔄</span>
+                </div>
+                <p class="insights-summary" id="insightsSummary">Loading insights...</p>
+                <div class="highlights" id="highlightsList">
+                    <!-- Highlights dynamically inserted -->
+                </div>
+                <div class="recommendations" id="recommendationsList">
+                    <!-- Recommendations dynamically inserted -->
+                </div>
+            </section>
+
+            <!-- Transactions List -->
+            <section class="card transactions-card">
+                <div class="card-header">
+                    <h2>Recent Transactions</h2>
+                    <div class="filter-tabs" id="categoryFilter">
+                        <button class="filter-tab active" data-category="all">All</button>
+                        <button class="filter-tab" data-category="Transport">Transport</button>
+                        <button class="filter-tab" data-category="Food">Food</button>
+                        <button class="filter-tab" data-category="Shopping">Shopping</button>
+                    </div>
+                </div>
+                <div class="transactions-list" id="transactionsList">
+                    <!-- Transactions dynamically inserted -->
+                </div>
+            </section>
+
+            <!-- Incentives Panel -->
+            <section class="card incentives-card">
+                <div class="card-header">
+                    <h2>FinTech Incentives</h2>
+                    <span class="badge simulation-badge">SIMULATED</span>
+                </div>
+                <p class="incentives-note">Estimated Monthly Value: <strong id="monthlyValue">--</strong></p>
+                <div class="incentives-grid" id="incentivesGrid">
+                    <!-- Incentives dynamically inserted -->
+                </div>
+                <p class="disclaimer" id="disclaimer"></p>
+            </section>
+
+            <!-- Category Impact Chart -->
+            <section class="card chart-card">
+                <div class="card-header">
+                    <h2>Impact by Category</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>GreenScore v1.0 | A Prototype FinTech + Sustainability Platform</p>
+            <p class="footer-note">Built with ESG principles • No real financial data used</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
